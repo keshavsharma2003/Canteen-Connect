@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const Inventory = () => {
-  const [pencil, setPencil] = useState('/Assets/Icons/pencil.svg');
-  const [deleteIcon, setDeleteIcon] = useState('/Assets/Icons/delete.svg');
   const [inventories, setInventories] = useState([]);
   const [editingId, setEditingId] = useState(null);
   const [formData, setFormData] = useState({
@@ -183,8 +181,7 @@ const Inventory = () => {
           </thead>
           <tbody>
             {inventories.map((inventory) => (
-              <tr key={inventory.id} className="hover:bg-[#994D1C] hover:text-white" onMouseEnter={() => {setPencil("/Assets/Icons/pencilHover.svg"); setDeleteIcon("/Assets/Icons/deleteHover.svg") }}
-              onMouseLeave={() => {setPencil("/Assets/Icons/pencil.svg"); setDeleteIcon("/Assets/Icons/delete.svg")}}>
+              <tr key={inventory.id} className="hover:bg-[#994D1C] hover:text-white">
                 <td className="py-2 border-2 border-[#994D1C]"><img src={inventory.picture} alt={inventory.name} className="w-16 h-12 object-cover mx-auto" /></td>
                 <td className="py-2 border-2 border-[#994D1C]">{inventory.name}</td>
                 <td className="py-2 border-2 border-[#994D1C]">&#8377;{inventory.price}</td>
@@ -196,13 +193,13 @@ const Inventory = () => {
                     onClick={() => handleEditClick(inventory)}
                     className=""
                   >
-                    <img src={pencil} alt="edit" className='w-5'/>
+                    <img src="/Assets/Icons/pencil.svg" alt="edit" className='w-5'/>
                   </button>
                   <button
                     onClick={() => deleteInventory(inventory.id)}
                     className=""
                   >
-                    <img src={deleteIcon} alt="delete"  className='w-5'/>
+                    <img src="/Assets/Icons/delete.svg" alt="delete"  className='w-5'/>
                   </button></div>
                 </td>
               </tr>

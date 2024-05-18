@@ -19,7 +19,7 @@ function Authenticate(props) {
       <div className="container w-full h-full mx-auto">
         <div className="w-full ">
           <h5 className="text-center font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
-            Smart Bite
+            Canteen Connect
           </h5>
         </div>
         <hr className="border-[#E48F45] w-full" />

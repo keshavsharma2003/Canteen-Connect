@@ -74,7 +74,7 @@ const EmployeeProfile = (props) => {
         } catch (error) {
             console.error('Error fetching data: ', error);
         }
-    }, []);
+    }, [activeTab]);
 
     return (
         <React.Fragment>

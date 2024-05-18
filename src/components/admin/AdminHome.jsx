@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useLayoutEffect } from "react";
+import React, { useState} from "react";
 import Inventory from "./Inventory";
 import WorkersList from "./WorkersList";
 import SellHistory from "./SellHistory";
@@ -16,8 +16,7 @@ const AdminHome = (props) => {
     photo: '',
     username: '',
     email: '',
-    password: '',
-    otp: '',
+    password: ''
   });
   const toggleCurrentOrders = () => {
     setShowCurrentOrders(true);
@@ -103,7 +102,7 @@ const AdminHome = (props) => {
           <div className="w-fit mx-auto rounded-lg flex flex-row justify-center bg-[#E48F45] font-semibold">
             <div className="">
               <button
-                className={`${showCurrentOrders == true ? 'bg-[#6b240c] text-white' : 'bg-trasparent text-[#6b240c]'} w-full py-1 px-2 text-lg rounded-lg`}
+                className={`${showCurrentOrders === true ? 'bg-[#6b240c] text-white' : 'bg-trasparent text-[#6b240c]'} w-full py-1 px-2 text-lg rounded-lg`}
                 onClick={toggleCurrentOrders}
               >
                 Current Orders
@@ -111,7 +110,7 @@ const AdminHome = (props) => {
             </div>
             <div className="">
               <button
-                className={`${showInventory == true ? 'bg-[#6b240c] text-white' : 'bg-trasparent text-[#6b240c]'} w-full py-1 px-2 text-lg rounded-lg`}
+                className={`${showInventory === true ? 'bg-[#6b240c] text-white' : 'bg-trasparent text-[#6b240c]'} w-full py-1 px-2 text-lg rounded-lg`}
                 onClick={toggleInventory}
               >
                 Inventory
@@ -119,7 +118,7 @@ const AdminHome = (props) => {
             </div>
             <div className="">
               <button
-                className={`${showWorkersList == true ? 'bg-[#6b240c] text-white' : 'bg-trasparent text-[#6b240c]'} w-full py-1 px-2 text-lg rounded-lg`}
+                className={`${showWorkersList === true ? 'bg-[#6b240c] text-white' : 'bg-trasparent text-[#6b240c]'} w-full py-1 px-2 text-lg rounded-lg`}
                 onClick={toggleWorkersList}
               >
                 Workers List
@@ -127,7 +126,7 @@ const AdminHome = (props) => {
             </div>
             <div className="">
               <button
-                className={`${showSellHistory == true ? 'bg-[#6b240c] text-white' : 'bg-trasparent text-[#6b240c]'} w-full py-1 px-2 text-lg rounded-lg`}
+                className={`${showSellHistory === true ? 'bg-[#6b240c] text-white' : 'bg-trasparent text-[#6b240c]'} w-full py-1 px-2 text-lg rounded-lg`}
                 onClick={toggleSellHistory}
               >
                 Orders History
