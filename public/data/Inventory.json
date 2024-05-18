@@ -1,0 +1,338 @@
+[
+    {
+        "id": 1001,
+        "name": "Pasta",
+        "picture": "Assets/Images/Pasta.webp",
+        "price": 150,
+        "description": "Delicious pasta made with fresh ingredients.",
+        "category": "dish"
+    },
+    {
+        "id": 1002,
+        "name": "Macaroni",
+        "picture": "Assets/Images/Macaroni.webp",
+        "price": 120,
+        "description": "Classic macaroni pasta with creamy sauce.",
+        "category": "dish"
+    },
+    {
+        "id": 1003,
+        "name": "Maggi",
+        "picture": "Assets/Images/Maggi.webp",
+        "price": 50,
+        "description": "Instant noodles with a unique blend of spices.",
+        "category": "dish"
+    },
+    {
+        "id": 1004,
+        "name": "Burger",
+        "picture": "Assets/Images/Burger.webp",
+        "price": 180,
+        "description": "Juicy veggie patty topped with lettuce, tomato, onion, and special sauce.",
+        "category": "dish"
+    },
+    {
+        "id": 1005,
+        "name": "Pizza",
+        "picture": "Assets/Images/Pizza.webp",
+        "price": 250,
+        "description": "Classic Italian pizza with a thin crust and a variety of veggie toppings.",
+        "category": "dish"
+    },
+    {
+        "id": 1006,
+        "name": "Chowmein",
+        "picture": "Assets/Images/Chowmein.webp",
+        "price": 100,
+        "description": "Stir-fried noodles with vegetables and sauces.",
+        "category": "dish"
+    },
+    {
+        "id": 1007,
+        "name": "Dosa",
+        "picture": "Assets/Images/Dosa.webp",
+        "price": 80,
+        "description": "South Indian crepe made from fermented rice and lentil batter.",
+        "category": "dish"
+    },
+    {
+        "id": 1008,
+        "name": "Chilli Fries",
+        "picture": "Assets/Images/Chilli Fries.webp",
+        "price": 120,
+        "description": "Crispy fries tossed in spicy seasoning.",
+        "category": "dish"
+    },
+    {
+        "id": 1009,
+        "name": "Spring Roll",
+        "picture": "Assets/Images/Spring Roll.webp",
+        "price": 90,
+        "description": "Crispy roll filled with vegetables, served with dipping sauce.",
+        "category": "dish"
+    },
+    {
+        "id": 1010,
+        "name": "Momos",
+        "picture": "Assets/Images/Momo.webp",
+        "price": 70,
+        "description": "Steamed dumplings filled with vegetables, served with spicy sauce.",
+        "category": "dish"
+    },
+    {
+        "id": 1011,
+        "name": "Samosa",
+        "picture": "Assets/Images/Samosa.webp",
+        "price": 60,
+        "description": "Crispy pastry filled with spiced potatoes and peas.",
+        "category": "dish"
+    },
+    {
+        "id": 1012,
+        "name": "Patties",
+        "picture": "Assets/Images/Patties.webp",
+        "price": 50,
+        "description": "Flaky pastry filled with savory filling.",
+        "category": "dish"
+    },
+    {
+        "id": 1013,
+        "name": "Chole Bhature",
+        "picture": "Assets/Images/Chole Bhature.webp",
+        "price": 120,
+        "description": "Spicy chickpea curry served with deep-fried bread.",
+        "category": "dish"
+    },
+    {
+        "id": 1014,
+        "name": "Idli",
+        "picture": "Assets/Images/Idli.webp",
+        "price": 70,
+        "description": "Soft and fluffy steamed rice cakes, served with chutney and sambar.",
+        "category": "dish"
+    },
+    {
+        "id": 1015,
+        "name": "Poha",
+        "picture": "Assets/Images/Poha.webp",
+        "price": 60,
+        "description": "Flattened rice cooked with onions, potatoes, and spices.",
+        "category": "dish"
+    },
+    {
+        "id": 1016,
+        "name": "Bhelpuri",
+        "picture": "Assets/Images/Bhelpuri.webp",
+        "price": 40,
+        "description": "Crunchy snack made with puffed rice, vegetables, and tangy chutneys.",
+        "category": "dish"
+    },
+    {
+        "id": 1017,
+        "name": "Papdi Chat",
+        "picture": "Assets/Images/PapdiChat.webp",
+        "price": 50,
+        "description": "Crispy fried dough wafers topped with chickpeas, yogurt, and chutneys.",
+        "category": "dish"
+    },
+    {
+        "id": 2001,
+        "name": "Jeera Soda",
+        "picture": "Assets/Images/Jeera Soda.webp",
+        "price": 40,
+        "description": "Refreshing soda flavored with cumin seeds.",
+        "category": "beverage"
+    },
+    {
+        "id": 2002,
+        "name": "Orange Juice",
+        "picture": "Assets/Images/Orange Juice.webp",
+        "price": 80,
+        "description": "Freshly squeezed orange juice.",
+        "category": "beverage"
+    },
+    {
+        "id": 2003,
+        "name": "Apple Juice",
+        "picture": "Assets/Images/Apple Juice.webp",
+        "price": 80,
+        "description": "Freshly squeezed apple juice.",
+        "category": "beverage"
+    },
+    {
+        "id": 2004,
+        "name": "Mixed Juice",
+        "picture": "Assets/Images/Mix Fruit.webp",
+        "price": 90,
+        "description": "Freshly squeezed mixed fruit juice.",
+        "category": "beverage"
+    },
+    {
+        "id": 2006,
+        "name": "Coconut Water",
+        "picture": "Assets/Images/Coconut.webp",
+        "price": 100,
+        "description": "Refreshing coconut water.",
+        "category": "beverage"
+    },
+    {
+        "id": 2007,
+        "name": "Coca-Cola",
+        "picture": "Assets/Images/CocaCola.webp",
+        "price": 30,
+        "description": "Classic carbonated soft drink with a refreshing taste.",
+        "category": "beverage"
+    },
+    {
+        "id": 2008,
+        "name": "Pepsi",
+        "picture": "Assets/Images/Pepsi.webp",
+        "price": 30,
+        "description": "Carbonated cola beverage enjoyed worldwide.",
+        "category": "beverage"
+    },
+    {
+        "id": 2009,
+        "name": "Sprite",
+        "picture": "Assets/Images/Sprite.webp",
+        "price": 30,
+        "description": "Lemon-lime flavored carbonated soft drink.",
+        "category": "beverage"
+    },
+    {
+        "id": 2010,
+        "name": "Frooti",
+        "picture": "Assets/Images/Frooti.webp",
+        "price": 20,
+        "description": "Popular mango-flavored drink with a refreshing taste.",
+        "category": "beverage"
+    },
+    {
+        "id": 2011,
+        "name": "Mountain Dew",
+        "picture": "Assets/Images/Dew.webp",
+        "price": 35,
+        "description": "Citrus-flavored carbonated soft drink with an energizing kick.",
+        "category": "beverage"
+    },
+    {
+        "id": 6001,
+        "name": "Aloo Bhujia",
+        "picture": "Assets/Images/Aloo Bhujia.webp",
+        "price": 40,
+        "description": "Spicy and crunchy potato snack perfect for munching.",
+        "category": "snack"
+    },
+    {
+        "id": 6002,
+        "name": "Sev",
+        "picture": "Assets/Images/Sev.webp",
+        "price": 30,
+        "description": "Thin and crispy noodles made from chickpea flour, seasoned with spices.",
+        "category": "snack"
+    },
+    {
+        "id": 6003,
+        "name": "Masala Peanuts",
+        "picture": "Assets/Images/MasalaPeanuts.webp",
+        "price": 50,
+        "description": "Roasted peanuts coated in a spicy masala mix, ideal for snacking.",
+        "category": "snack"
+    },
+    {
+        "id": 6004,
+        "name": "Chana Dal",
+        "picture": "Assets/Images/ChanaDal.webp",
+        "price": 45,
+        "description": "Crunchy and savory fried lentils seasoned with spices.",
+        "category": "snack"
+    },
+    {
+        "id": 6005,
+        "name": "Moong Dal",
+        "picture": "Assets/Images/MoongDal.webp",
+        "price": 35,
+        "description": "Crispy fried split yellow lentils flavored with spices.",
+        "category": "snack"
+    },
+    {
+        "id": 4001,
+        "name": "Good Day",
+        "picture": "Assets/Images/Good Day.webp",
+        "price": 30,
+        "description": "Buttery and crunchy biscuits loved by all ages.",
+        "category": "snack"
+    },
+    {
+        "id": 4003,
+        "name": "Bourbon",
+        "picture": "Assets/Images/Bourbon.webp",
+        "price": 20,
+        "description": "Rich, chocolate cream sandwiched between crispy biscuits.",
+        "category": "snack"
+    },
+    {
+        "id": 4004,
+        "name": "Hide & Seek",
+        "picture": "Assets/Images/Hide & Seek.webp",
+        "price": 25,
+        "description": "Crunchy chocolate chip cookies that melt in your mouth.",
+        "category": "snack"
+    },
+    {
+        "id": 4005,
+        "name": "Oreo",
+        "picture": "Assets/Images/Oreo.webp",
+        "price": 35,
+        "description": "Classic sandwich cookies with a creamy filling, perfect for dunking in milk.",
+        "category": "snack"
+    },
+    {
+        "id": 5001,
+        "name": "Dairy Milk",
+        "picture": "Assets/Images/DairyMilk.webp",
+        "price": 20,
+        "description": "Creamy milk chocolate loved by millions around the world.",
+        "category": "dessert"
+    },
+    {
+        "id": 5002,
+        "name": "KitKat",
+        "picture": "Assets/Images/KitKat.webp",
+        "price": 15,
+        "description": "Crisp wafers covered in smooth milk chocolate, perfect for a break.",
+        "category": "dessert"
+    },
+    {
+        "id": 3001,
+        "name": "Strawberry Ice Cream",
+        "picture": "Assets/Images/Strawberry.webp",
+        "price": 50,
+        "description": "Creamy strawberry-flavored ice cream.",
+        "category": "dessert"
+    },
+    {
+        "id": 3002,
+        "name": "Vanilla Ice Cream",
+        "picture": "Assets/Images/Vanilla.webp",
+        "price": 50,
+        "description": "Classic creamy vanilla-flavored ice cream.",
+        "category": "dessert"
+    },
+    {
+        "id": 3003,
+        "name": "Butterscotch Ice Cream",
+        "picture": "Assets/Images/Butterscotch.webp",
+        "price": 50,
+        "description": "Rich and creamy butterscotch-flavored ice cream.",
+        "category": "dessert"
+    },
+    {
+        "id": 3004,
+        "name": "Chocolate Ice Cream",
+        "picture": "Assets/Images/Chocolate.webp",
+        "price": 50,
+        "description": "Indulgent chocolate-flavored ice cream.",
+        "category": "dessert"
+    }
+]
