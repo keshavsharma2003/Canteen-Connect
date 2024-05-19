@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 const EmployeeProfile = (props) => {
     const [profile, setProfile] = useState({
-        photo: '',
+        photo: '/Assets/Icons/user.svg',
         username: '',
         email: '',
         password: '',
@@ -79,8 +79,8 @@ const EmployeeProfile = (props) => {
     return (
         <React.Fragment>
             <div className="w-full md:w-3/4 lg:w-1/2 text-[#6b240c] mx-auto py-3 my-14 backdrop-blur md:border-2 md:rounded-lg">
-                <div className="absolute right-1 top-0 w-4 h-4">
-                    <button className="font-extrabold text-white text-2xl w-full h-full" onClick={closeProfile}>&times;</button>
+                <div className="absolute right-3 top-0 w-4 h-4">
+                    <button className="font-extrabold text-[#6b240c] text-4xl w-full h-full" onClick={closeProfile}>&times;</button>
                 </div>
                 <div className="flex flex-row justify-center">
                     <button
@@ -95,13 +95,24 @@ const EmployeeProfile = (props) => {
                     </button>
                 </div>
                 {activeTab === 'profile' && (<div className="p-6 rounded-lg w-full">
-                    <div>
-                        <label className="block mb-2">Change Profile Photo</label>
+                <div className="flex flex-col items-center w-full mt-3">
+                        <label className="block w-full font-semibold text-lg mb-2">Photo:</label>
+                        <img src={profile.photo} alt="User Photo" className="w-full h-auto rounded-xl mb-3" />
                         <input
                             type="file"
+                            name="photo"
+                            accept="image/*"
                             onChange={handlePhotoChange}
-                            className="mb-4"
+                            id="photo-upload"
+                            className="hidden"
                         />
+                        <button
+                            type="button"
+                            onClick={() => document.getElementById('photo-upload').click()}
+                            className="w-full p-3 bg-[#e48f45] rounded-xl text-white font-semibold hover:bg-[#6B240C]"
+                        >
+                            Change Photo
+                        </button>
                     </div>
                     <div>
                         <label className="block mb-2">Username</label>

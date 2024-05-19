@@ -93,7 +93,7 @@ const AdminHome = (props) => {
           </div>
         </div>
         <hr className="border-[#E48F45]" />
-        {showTabs && (<div className="w-full mx-auto py-3 my-14 ">
+        {showTabs && (<div className="w-full mx-auto py-1 mt-14 ">
           <div className="text-center font-semibold text-4xl mb-3 text-[#6B240C]">
             <h2>
               Admin Portal

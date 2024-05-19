@@ -1,8 +1,8 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 
 const AdminProfile = (props) => {
     const [profile, setProfile] = useState({
-        photo: '',
+        photo: '/Assets/Icons/user.svg',
         username: '',
         email: '',
         password: '',
@@ -18,14 +18,26 @@ const AdminProfile = (props) => {
         const { name, value } = e.target;
         setProfile((prevProfile) => ({ ...prevProfile, [name]: value }));
     };
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setProfile((prevProfile) => ({
+            ...prevProfile,
+            [name]: value
+        }));
+    };
 
     const handlePhotoChange = (e) => {
         const file = e.target.files[0];
-        const reader = new FileReader();
-        reader.onloadend = () => {
-            setProfile((prevProfile) => ({ ...prevProfile, photo: reader.result }));
-        };
-        reader.readAsDataURL(file);
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setProfile((prevProfile) => ({
+                    ...prevProfile,
+                    photo: reader.result
+                }));
+            };
+            reader.readAsDataURL(file);
+        }
     };
 
     const sendOTP = () => {
@@ -49,59 +61,75 @@ const AdminProfile = (props) => {
     return (
         <React.Fragment>
             <div className="w-full md:w-3/4 lg:w-1/2 text-[#6b240c] mx-auto py-3 my-14 backdrop-blur md:border-2 md:rounded-lg">
-                <div className="absolute right-1 top-0 w-4 h-4">
-                    <button className="font-extrabold text-white text-2xl w-full h-full" onClick={closeProfile}>&times;</button>
+                <div className="absolute right-3 top-0 w-4 h-4">
+                    <button className="font-extrabold text-[#6b240c] text-4xl w-full h-full" onClick={closeProfile}>&times;</button>
                 </div>
                 <h2 className="text-xl text-center font-bold underline">Your Profile</h2>
                 <div className="p-6 rounded-lg w-full">
-                    <div>
-                        <label className="block mb-2">Change Profile Photo</label>
+                    
+                    <div className="flex flex-col items-center w-full mt-3">
+                        <label className="block w-full font-semibold text-lg mb-2">Photo:</label>
+                        <img src={profile.photo} alt="User Photo" className="w-full h-auto rounded-xl mb-3" />
                         <input
                             type="file"
+                            name="photo"
+                            accept="image/*"
                             onChange={handlePhotoChange}
-                            className="mb-4"
+                            id="photo-upload"
+                            className="hidden"
                         />
+                        <button
+                            type="button"
+                            onClick={() => document.getElementById('photo-upload').click()}
+                            className="w-full p-3 bg-[#e48f45] rounded-xl text-white font-semibold hover:bg-[#6B240C]"
+                        >
+                            Change Photo
+                        </button>
                     </div>
-                    <div>
-                        <label className="block mb-2">Username</label>
+                    <div className="flex flex-row justify-between items-center">
+                        <label className="block w-1/3 font-semibold text-lg">Username :</label>
                         <input
                             type="text"
                             name="username"
                             value={profile.username}
                             onChange={handleProfileChange}
-                            className="border border-gray-300 rounded px-2 py-1 w-full mb-4"
+                            className="w-full p-3 bg-transparent rounded-xl border-2 hover:border-[#e48f45] placeholder-[#6B240C] focus:border-[#6B240C] focus:outline-none"
 
                         />
                     </div>
-                    <div>
-                        <label className="block mb-2">Email</label>
+                    <div className="flex flex-row justify-between items-center">
+                        <label className="block w-1/3 font-semibold text-lg">Email :</label>
                         <input
                             type="email"
                             name="email"
                             value={profile.email}
                             onChange={handleProfileChange}
-                            className="border border-gray-300 rounded px-2 py-1 w-full mb-2"
+                            className="w-full p-3 bg-transparent rounded-xl border-2 hover:border-[#e48f45] placeholder-[#6B240C] focus:border-[#6B240C] focus:outline-none"
                         />
+                        </div>
+                        <div className="flex flex-row justify-between items-center">
                         {isOTPSent ? (
                             <>
+                            <label htmlFor="otp" className="block w-1/3 font-semibold text-lg">OTP :</label>
                                 <input
                                     type="text"
                                     name="otp"
+                                    id="otp"
                                     value={profile.otp}
                                     onChange={handleProfileChange}
                                     placeholder="Enter OTP"
-                                    className="border border-gray-300 rounded px-2 py-1 w-full mb-4"
+                                    className="w-full p-3 bg-transparent rounded-xl border-2 hover:border-[#e48f45] placeholder-[#6B240C] focus:border-[#6B240C] focus:outline-none"
                                 />
                                 <button
                                     onClick={validateOTP}
-                                    className="bg-green-500 text-white px-4 py-2 rounded mb-4 w-full"
+                                    className="bg-green-500 text-white px-2 py-2 rounded w-full"
                                 >
                                     Validate OTP
                                 </button>
                             </>
                         ) : (
                             <button
-                                onClick={sendOTP}
+                                onClick={sendOTP()}
                                 className="bg-blue-500 text-white px-4 py-2 rounded mb-4 w-full"
                             >
                                 Send OTP

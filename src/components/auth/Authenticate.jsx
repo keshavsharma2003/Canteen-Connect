@@ -18,8 +18,8 @@ function Authenticate(props) {
     <React.Fragment>
       <div className="container w-full h-full mx-auto">
         <div className="w-full ">
-          <h5 className="text-center font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
-            Canteen Connect
+          <h5 className="text-center font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl">
+            CANTEEN CONNECT
           </h5>
         </div>
         <hr className="border-[#E48F45] w-full" />
@@ -27,7 +27,7 @@ function Authenticate(props) {
           <div className="w-full">
           {!designation && (
             <img
-              src="/Assets/Pictures/smart-bite-logo.webp"
+              src="/Assets/Pictures/logo.png"
               alt="Chef"
               className="w-2/3 sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 mx-auto my-24 animate-bounce ..."
             />

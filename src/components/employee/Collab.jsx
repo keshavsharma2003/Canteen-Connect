@@ -33,8 +33,8 @@ const [employeeEmail, setEmployeeEmail] = useState('');
   return (
     <React.Fragment>
       <div className="w-full md:w-3/4 lg:w-1/2 text-[#6b240c] mx-auto p-3 my-14 backdrop-blur md:border-2 md:rounded-lg">
-        <div className="absolute right-1 top-0 w-4 h-4">
-          <button className="font-extrabold text-white text-2xl w-full h-full" onClick={closeCollab}>&times;</button>
+        <div className="absolute right-3 top-0 w-4 h-4">
+          <button className="font-extrabold text-[#6b240c] text-4xl w-full h-full" onClick={closeCollab}>&times;</button>
         </div>
         <h1 className="text-center font-semibold text-lg md:text-xl lg:text-2xl underline">Collaborate Ordering</h1>
         <div className='flex flex-row justify-evenly my-4'>
