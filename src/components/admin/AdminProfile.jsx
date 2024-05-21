@@ -1,29 +1,17 @@
 import React, { useState } from "react";
 
 const AdminProfile = (props) => {
-    const [profile, setProfile] = useState({
-        photo: '/Assets/Icons/user.svg',
-        username: '',
-        email: '',
-        password: '',
-        otp: '',
-    });
+    const [tempProfile, setTempProfile] = useState({ ...props.profile });
     const [isOTPSent, setIsOTPSent] = useState(false);
     const closeProfile = () => {
         props.setShowCurrentOrders(!props.showCurrentOrders);
         props.setShowProfile(!props.showProfile);
         props.setShowTabs(!props.showTabs);
     }
+
     const handleProfileChange = (e) => {
         const { name, value } = e.target;
-        setProfile((prevProfile) => ({ ...prevProfile, [name]: value }));
-    };
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setProfile((prevProfile) => ({
-            ...prevProfile,
-            [name]: value
-        }));
+        setTempProfile((prevProfile) => ({ ...prevProfile, [name]: value }));
     };
 
     const handlePhotoChange = (e) => {
@@ -31,7 +19,7 @@ const AdminProfile = (props) => {
         if (file) {
             const reader = new FileReader();
             reader.onloadend = () => {
-                setProfile((prevProfile) => ({
+                setTempProfile((prevProfile) => ({
                     ...prevProfile,
                     photo: reader.result
                 }));
@@ -55,7 +43,23 @@ const AdminProfile = (props) => {
             alert('Please validate your OTP first.');
             return;
         }
+        props.setProfile({ ...tempProfile });
+        updateLocalStorage();
         alert('Profile updated successfully.');
+    };
+    const updateLocalStorage = () => {
+        const adminDetails = {
+            AdminName: props.profile.name,
+            AdminEmail: props.profile.email,
+            AdminPassword: props.profile.password,
+        };
+        localStorage.setItem(
+            "LOGGED_IN",
+            JSON.stringify({
+                ROLE: "ADMIN",
+                payload: adminDetails,
+            })
+        );
     };
 
     return (
@@ -65,11 +69,10 @@ const AdminProfile = (props) => {
                     <button className="font-extrabold text-[#6b240c] text-4xl w-full h-full" onClick={closeProfile}>&times;</button>
                 </div>
                 <h2 className="text-xl text-center font-bold underline">Your Profile</h2>
-                <div className="p-6 rounded-lg w-full">
-                    
-                    <div className="flex flex-col items-center w-full mt-3">
-                        <label className="block w-full font-semibold text-lg mb-2">Photo:</label>
-                        <img src={profile.photo} alt="User Photo" className="w-full h-auto rounded-xl mb-3" />
+                <div className="p-6 rounded-lg w-full space-y-2">
+
+                    <div className="flex flex-col items-center w-full">
+                        <img src={tempProfile.photo} alt="User" className="w-2/3 md:w-1/2 lg:w-1/3 h-auto rounded-3xl mb-3 border-2 border-[#6b240c] bg-[#994D1C] p-2" />
                         <input
                             type="file"
                             name="photo"
@@ -81,9 +84,9 @@ const AdminProfile = (props) => {
                         <button
                             type="button"
                             onClick={() => document.getElementById('photo-upload').click()}
-                            className="w-full p-3 bg-[#e48f45] rounded-xl text-white font-semibold hover:bg-[#6B240C]"
+                            className="w-2/3 md:w-1/2 lg:w-1/3 px-3 py-2 bg-[#e48f45] rounded-full text-[#6b240c] hover:text-white text-lg font-semibold hover:bg-[#6B240C] border-2 border-[#6b240c]"
                         >
-                            Change Photo
+                            Upload Photo
                         </button>
                     </div>
                     <div className="flex flex-row justify-between items-center">
@@ -91,7 +94,7 @@ const AdminProfile = (props) => {
                         <input
                             type="text"
                             name="username"
-                            value={profile.username}
+                            value={tempProfile.name}
                             onChange={handleProfileChange}
                             className="w-full p-3 bg-transparent rounded-xl border-2 hover:border-[#e48f45] placeholder-[#6B240C] focus:border-[#6B240C] focus:outline-none"
 
@@ -102,53 +105,66 @@ const AdminProfile = (props) => {
                         <input
                             type="email"
                             name="email"
-                            value={profile.email}
+                            value={tempProfile.email}
                             onChange={handleProfileChange}
                             className="w-full p-3 bg-transparent rounded-xl border-2 hover:border-[#e48f45] placeholder-[#6B240C] focus:border-[#6B240C] focus:outline-none"
                         />
-                        </div>
-                        <div className="flex flex-row justify-between items-center">
+                    </div>
+                    <div className="flex flex-row justify-between items-center">
                         {isOTPSent ? (
                             <>
-                            <label htmlFor="otp" className="block w-1/3 font-semibold text-lg">OTP :</label>
-                                <input
-                                    type="text"
-                                    name="otp"
-                                    id="otp"
-                                    value={profile.otp}
-                                    onChange={handleProfileChange}
-                                    placeholder="Enter OTP"
-                                    className="w-full p-3 bg-transparent rounded-xl border-2 hover:border-[#e48f45] placeholder-[#6B240C] focus:border-[#6B240C] focus:outline-none"
-                                />
-                                <button
-                                    onClick={validateOTP}
-                                    className="bg-green-500 text-white px-2 py-2 rounded w-full"
-                                >
-                                    Validate OTP
-                                </button>
+                                <label htmlFor="otp" className="block w-1/3 font-semibold text-lg">OTP :</label>
+                                <div className="w-full flex flex-row justify-between">
+                                    <input
+                                        type="text"
+                                        name="otp"
+                                        id="otp"
+                                        value={tempProfile.otp}
+                                        onChange={handleProfileChange}
+                                        placeholder="Enter OTP"
+                                        className="w-2/5 p-3 bg-transparent rounded-xl border-2 hover:border-[#e48f45] placeholder-[#6B240C] focus:border-[#6B240C] focus:outline-none"
+                                    />
+                                    <button
+                                        onClick={validateOTP}
+                                        className="w-2/5 px-3 py-2 bg-[#e48f45] rounded-full text-[#6b240c] hover:text-white text-lg font-semibold hover:bg-[#6B240C] border-2 border-[#6b240c]"
+                                    >
+                                        Validate OTP
+                                    </button>
+                                </div>
                             </>
                         ) : (
                             <button
-                                onClick={sendOTP()}
-                                className="bg-blue-500 text-white px-4 py-2 rounded mb-4 w-full"
+                                onClick={sendOTP}
+                                className="w-2/3 md:w-1/2 lg:w-1/3 mx-auto px-3 py-2 bg-[#e48f45] rounded-full text-[#6b240c] hover:text-white text-lg font-semibold hover:bg-[#6B240C] border-2 border-[#6b240c]"
                             >
                                 Send OTP
                             </button>
                         )}
                     </div>
-                    <div>
-                        <label className="block mb-2">Password</label>
+                    <div className="flex flex-row justify-between items-center">
+                        <label className="block w-1/3 font-semibold text-lg">Password</label>
                         <input
                             type="password"
                             name="password"
-                            value={profile.password}
+                            value={tempProfile.password}
                             onChange={handleProfileChange}
-                            className="border border-gray-300 rounded px-2 py-1 w-full mb-4"
+                            className="w-full p-3 bg-transparent rounded-xl border-2 hover:border-[#e48f45] placeholder-[#6B240C] focus:border-[#6B240C] focus:outline-none"
+                        />
+                    </div>
+                    <div className="flex flex-row justify-between items-center">
+                        <label className="block w-1/3 font-semibold text-lg">Address :</label>
+                        <input
+                            type="text"
+                            name="permanentAddress"
+                            value={tempProfile.permanentAddress}
+                            onChange={handleProfileChange}
+                            className="w-full p-3 bg-transparent rounded-xl border-2 hover:border-[#e48f45] placeholder-[#6B240C] focus:border-[#6B240C] focus:outline-none"
+
                         />
                     </div>
                     <button
                         onClick={handleProfileUpdate}
-                        className="bg-[#994D1C] text-white px-4 py-2 rounded m-2 w-1/2 md:w-1/3 lg:w-2/5"
+                        className="block w-2/3 md:w-1/2 lg:w-1/3 mx-auto px-3 py-2 bg-[#e48f45] rounded-full text-[#6b240c] hover:text-white text-xl font-semibold hover:bg-[#6B240C] border-2 border-[#6b240c]"
                     >
                         Update Profile
                     </button>

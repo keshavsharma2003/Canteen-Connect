@@ -60,6 +60,7 @@ function AuthEmployee(props) {
     props.setEmployeeLoggedIn(true);
     props.setEmployeeProfile("EMPLOYEE");
   };
+  
   return (
     <React.Fragment>
       {/* When Designation Is Null */}

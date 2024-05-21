@@ -19,7 +19,7 @@ function Authenticate(props) {
       <div className="container w-full h-full mx-auto">
         <div className="w-full ">
           <h5 className="text-center font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl">
-            CANTEEN CONNECT
+            CANTEEN CIRCUIT
           </h5>
         </div>
         <hr className="border-[#E48F45] w-full" />

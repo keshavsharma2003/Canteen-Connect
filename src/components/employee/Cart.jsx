@@ -121,7 +121,7 @@ const closeCart = () => {
               id="order-date"
               value={orderDate}
               onChange={(e) => setOrderDate(e.target.value)}
-              className="border border-gray-300 rounded px-2 py-1"
+              className="border-2 border-[#6B240C] bg-transparent  rounded px-2 py-1"
             >
               {getDateOptions().map(date => (
                 <option key={date} value={date}>{date}</option>
@@ -134,12 +134,22 @@ const closeCart = () => {
               id="order-time"
               value={orderTime}
               onChange={(e) => setOrderTime(e.target.value)}
-              className="border border-gray-300 rounded px-2 py-1"
+              className="border-2 border-[#6B240C] bg-transparent rounded px-2 py-1"
             >
               {getTimeOptions().map(time => (
                 <option key={time} value={time}>{time}</option>
               ))}
             </select>
+          </div>
+          <div className="flex justify-between items-center mb-2">
+          <label htmlFor="order-address" className="mr-2">Address : </label>
+            <input
+              type="text"
+              id="order-address"
+              value={props.profile.permanantAddress}
+              onChange={(e) => props.setProfile({ ...props.profile, permanantAddress: e.target.value })}
+              className="border-2 border-[#6B240C] bg-transparent  focus:border-[#6B240C] focus:outline-none rounded px-2 py-1"
+            />
           </div>
           <div className="flex justify-between items-center">
             <span className="font-bold text-lg">Total: &#8377;{totalAmount.toFixed(2)}</span>

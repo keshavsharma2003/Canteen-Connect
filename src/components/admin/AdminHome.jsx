@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState, useEffect } from "react";
 import Inventory from "./Inventory";
 import WorkersList from "./WorkersList";
 import SellHistory from "./SellHistory";
@@ -13,10 +13,14 @@ const AdminHome = (props) => {
   const [showCurrentOrders, setShowCurrentOrders] = useState(true);
   const [showProfile, setShowProfile] = useState(false);
   const [profile, setProfile] = useState({
-    photo: '',
-    username: '',
+    id: '',
+    photo: '/Assets/Icons/user.svg',
+    name: '',
     email: '',
-    password: ''
+    password: '',
+    permanantAddress: '',
+    tempAddress: '',
+    otp: '',
   });
   const toggleCurrentOrders = () => {
     setShowCurrentOrders(true);
@@ -53,16 +57,25 @@ const AdminHome = (props) => {
     setShowProfile(false);
     setShowWorkersList(false);
     setShowSellHistory(true);
-  };
-
-  const loggedInAdmin = JSON.parse(localStorage.getItem("LOGGED_IN"))?.payload
-    ?.AdminName;
+  }
 
   const onAdminLogout = () => {
     props.didLoginHappen(false);
     props.setLoggedInProfile(null);
     localStorage.clear();
   };
+
+  useEffect(() => {
+    const storedProfile = JSON.parse(localStorage.getItem("LOGGED_IN"))?.payload;
+    if (storedProfile) {
+      setProfile(prevProfile => ({
+        ...prevProfile,
+        name: storedProfile.AdminName || '',
+        email: storedProfile.AdminEmail || '',
+        password: storedProfile.AdminPassword || '',
+      }));
+    }
+  }, []);
 
   return (
     <React.Fragment>
@@ -77,7 +90,7 @@ const AdminHome = (props) => {
               />
             </button>
             <h5 className="font-extrabold text-white">
-              Hi  {loggedInAdmin}
+              Hi  {profile.name}
             </h5>
           </div>
           <div>
@@ -146,6 +159,8 @@ const AdminHome = (props) => {
           setShowProfile={setShowProfile}
           showTabs={showTabs}
           setShowTabs={setShowTabs}
+          profile={profile}
+          setProfile={setProfile}
         />
         )}
 
@@ -163,7 +178,7 @@ const AdminHome = (props) => {
 
         />
         )}
-        
+
       </div>
     </React.Fragment>
   );

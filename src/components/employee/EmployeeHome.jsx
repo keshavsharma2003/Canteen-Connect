@@ -14,10 +14,13 @@ const EmployeeHome = (props) => {
   const [showCollab, setShowCollab] = useState(false);
   const [showProfile, setShowProfile] = useState(false);
   const [profile, setProfile] = useState({
-    photo: '',
-    username: '',
+    id: '',
+    photo: '/Assets/Icons/user.svg',
+    name: '',
     email: '',
     password: '',
+    permanantAddress: '',
+    tempAddress: '',
     otp: '',
   });
   const [previousOrders, setPreviousOrders] = useState([]);
@@ -112,14 +115,26 @@ const EmployeeHome = (props) => {
     };
     fetchData();
   }, [activeTab]);
-  const loggedInEmployee = JSON.parse(localStorage.getItem("LOGGED_IN"))?.payload
-    ?.EmployeeName;
 
   const onEmployeeLogout = () => {
     props.didLoginHappen(false);
     props.setLoggedInProfile(null);
     localStorage.clear();
   };
+
+  useEffect(() => {
+    const storedProfile = JSON.parse(localStorage.getItem("LOGGED_IN"))?.payload;
+    if (storedProfile) {
+      setProfile(prevProfile => ({
+        ...prevProfile,
+        name: storedProfile.EmployeeName || '',
+        email: storedProfile.EmployeeEmail || '',
+        password: storedProfile.EmployeePassword || '',
+        permanantAddress: storedProfile.EmployeeAddress || '',
+      }));
+    }
+  }, []);
+
   return (
     <React.Fragment>
       <div className="w-full h-full">
@@ -133,7 +148,7 @@ const EmployeeHome = (props) => {
               />
             </button>
             <h5 className="font-extrabold text-white">
-              Hi  {loggedInEmployee}
+              Hi  {profile.name}
             </h5>
           </div>
           <div>
@@ -166,6 +181,8 @@ const EmployeeHome = (props) => {
           setShowMenu={setShowMenu}
           showCart={showCart}
           setShowCart={setShowCart}
+          profile={profile}
+          setProfile={setProfile}
         />)}
         {showProfile && (<EmployeeProfile
           profile={profile}

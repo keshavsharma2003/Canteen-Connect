@@ -3,6 +3,7 @@ import axios from 'axios';
 
 const Inventory = () => {
   const [showForm, setShowForm] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
   const [showInventory, setShowInventory] = useState(true);
   const [inventories, setInventories] = useState([]);
   const [editingId, setEditingId] = useState(null);
@@ -21,10 +22,22 @@ const Inventory = () => {
     setShowForm(!showForm);
     setShowInventory(!showInventory);
   }
+
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const filteredItems = inventories.filter((item) =>
+    item.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   const fetchInventories = async () => {
     try {
       const response = await axios.get('/data/Inventory.json');
-      setInventories(response.data);
+      const data = response.data;
+      let filteredItems = [];
+      filteredItems = Object.values(data).flat();
+      setInventories(filteredItems);
     } catch (error) {
       console.error('Error fetching inventories', error);
     }
@@ -91,16 +104,25 @@ const Inventory = () => {
             <button className="font-extrabold text-[#6b240c] text-4xl w-full h-full" onClick={toggleForm}>&times;</button>
           </div>
           <h2 className="text-xl font-bold pb-2 underline text-center">Inventory Form</h2>
-          <label htmlFor="picture" className="block">Picture</label>
-          <input
-            type="text"
-            name="picture"
-            placeholder="Picture URL"
-            value={formData.picture}
-            onChange={handleInputChange}
-            required
-            className="block w-full p-2 border border-gray-300 rounded"
-          />
+          <div className="flex flex-col items-center w-full">
+            <img src={formData.picture} alt={formData.name} className="w-2/3 md:w-1/2 lg:w-1/3 h-auto rounded-3xl mb-3 border-2 border-[#6b240c] bg-[#994D1C] p-2" />
+            <input
+              type="file"
+              name="photo"
+              accept="image/*"
+              onChange={handleInputChange}
+              id="photo-upload"
+              className="hidden"
+              required
+            />
+            <button
+              type="button"
+              onClick={() => document.getElementById('photo-upload').click()}
+              className="w-2/3 md:w-1/2 lg:w-1/3 px-3 py-2 bg-[#e48f45] rounded-full text-[#6b240c] hover:text-white text-lg font-semibold hover:bg-[#6B240C] border-2 border-[#6b240c]"
+            >
+              Upload Photo
+            </button>
+          </div>
           <div className='flex flex-row justify-between items-center'>
           <label htmlFor="name" className="block w-1/3 font-semibold text-lg">Name :</label>
           <input
@@ -196,6 +218,15 @@ const Inventory = () => {
         {showInventory && (<div className='w-full'>
           <div className='flex flex-row justify-between my-2'>
             <h1 className="text-2xl font-bold">Inventory List</h1>
+            <div className="px-4 w-full md:w-3/6 my-1">
+              <input
+                type="text"
+                placeholder="Search..."
+                value={searchTerm}
+                onChange={handleSearch}
+                className="border-2 border-[#994D1C] bg-[#F5CCA0] rounded-md h-full px-4 py-2 w-full placeholder-[#6B240C] focus:border-[#6B240C] focus:outline-none"
+              />
+            </div>
             <button className='px-4 py-2 bg-[#994D1C] hover:bg-[#6b240c] text-white rounded-md' onClick={toggleForm}>Add Item</button>
           </div>
         <table className="min-w-full text-center bg-[#F5CCA0]">
@@ -211,7 +242,7 @@ const Inventory = () => {
             </tr>
           </thead>
           <tbody>
-            {inventories.map((inventory) => (
+            {filteredItems.map((inventory) => (
               <tr key={inventory.id} className="hover:bg-[#994D1C] hover:text-white">
                 <td className="py-2 border-2 border-[#994D1C]">{inventory.id}</td>
                 <td className="py-2 border-2 border-[#994D1C]"><img src={inventory.picture} alt={inventory.name} className="w-16 h-12 object-cover mx-auto" /></td>

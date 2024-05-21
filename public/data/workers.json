@@ -1,0 +1,68 @@
+[
+  {
+    "id": 101,
+    "photo": "Assets/Photo/worker1.webp",
+    "name": "John Doe",
+    "email": "john.doe@example.com",
+    "phone": "+1234567890",
+    "dob": "1985-01-15",
+    "bloodGroup": "O+",
+    "address": "123 Main St, Springfield, IL 62701",
+    "gender": "Male"
+  },
+  {
+    "id": 102,
+    "photo": "Assets/Photo/worker6.webp",
+    "name": "John Doe",
+    "email": "john.doe@example.com",
+    "phone": "+1234567890",
+    "dob": "1985-01-15",
+    "bloodGroup": "O+",
+    "address": "123 Main St, Springfield, IL 62701",
+    "gender": "Male"
+  },
+  {
+    "id": 103,
+    "photo": "Assets/Photo/worker5.webp",
+    "name": "John Doe",
+    "email": "john.doe@example.com",
+    "phone": "+1234567890",
+    "dob": "1985-01-15",
+    "bloodGroup": "O+",
+    "address": "123 Main St, Springfield, IL 62701",
+    "gender": "Male"
+  },
+  {
+    "id": 104,
+    "photo": "Assets/Photo/worker2.webp",
+    "name": "Jane Smith",
+    "email": "jane.smith@example.com",
+    "phone": "+0987654321",
+    "dob": "1990-05-30",
+    "bloodGroup": "A-",
+    "address": "456 Elm St, Springfield, IL 62702",
+    "gender": "Female"
+  },
+  {
+    "id": 105,
+    "photo": "Assets/Photo/worker3.webp",
+    "name": "Robert Johnson",
+    "email": "robert.johnson@example.com",
+    "phone": "+1122334455",
+    "dob": "1978-11-20",
+    "bloodGroup": "B+",
+    "address": "789 Oak St, Springfield, IL 62703",
+    "gender": "Male"
+  },
+  {
+    "id": 106,
+    "photo": "Assets/Photo/worker4.webp",
+    "name": "Emily Davis",
+    "email": "emily.davis@example.com",
+    "phone": "+2233445566",
+    "dob": "1995-08-12",
+    "bloodGroup": "AB+",
+    "address": "101 Maple St, Springfield, IL 62704",
+    "gender": "Female"
+  }
+]
