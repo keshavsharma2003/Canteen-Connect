@@ -1,21 +1,43 @@
 import React, { useState } from 'react';
 
 const Collab = (props) => {
+  const [collabData, setCollabData] = useState('');
   const [randomCode, setRandomCode] = useState('');
-const [employeeName, setEmployeeName] = useState('');
-const [employeeEmail, setEmployeeEmail] = useState('');
+  const [employeeName, setEmployeeName] = useState('');
+  const [employeeEmail, setEmployeeEmail] = useState('');
   const closeCollab = () => {
     props.setShowMenu(!props.showMenu);
     props.setShowCollab(!props.showCollab);
   }
+
+  const fetchCollab = async () => {
+    try {
+      const response = await axios.get('/data/collab.json');
+      const data = response.data;
+      let filteredItems = [];
+      filteredItems = Object.values(data).flat();
+      setCollabData(filteredItems);
+    } catch (error) {
+      console.error('Error fetching orders:', error);
+    }
+  };
 
   const joinCollab = () => {
     setEmployeeName(JSON.parse(localStorage.getItem("LOGGED_IN"))?.payload
       ?.EmployeeName)
     setEmployeeEmail(JSON.parse(localStorage.getItem("LOGGED_IN"))?.payload
       ?.EmployeeEmail)
+      addToCollab(employeeName, employeeEmail);
+    fetchCollab();
   }
 
+  const addToCollab = async (name, email)=>{
+      try {
+        await axios.post('/data/collab.json', );
+      } catch (error) {
+        console.error('Error creating inventory', error);
+      }
+  }
   const collabCodeChange = (e) => {
     setRandomCode(e.target.value);
   }
@@ -47,13 +69,12 @@ const [employeeEmail, setEmployeeEmail] = useState('');
           <button onClick={generateRandomCode} className='bg-[#994D1C] hover:bg-[#6b240c] text-white px-4 py-2 rounded border-2 border-[#6b240c] w-1/5'>Generate a Code</button>
         </div>
         <div>
-          <p>{employeeName} {employeeEmail}</p>
-          {/* {users.map((user, index) => (
+                    {collabData.map((user, index) => (
             <div key={index} className="flex items-center my-2">
-              <img src={user.picture} alt={user.name} className="w-8 h-8 rounded-full" />
-              <span className="ml-2">{user.name}</span>
+                            <p className="">{user.name}</p>
+                            <p className="">{user.email}</p>
             </div>
-          ))} */}
+          ))}
         </div>
         <div className='flex flex-row justify-evenly'>
           <button onClick={joinCollab} className='w-2/5 bg-[#994D1C] hover:bg-[#6b240c] text-white px-4 py-2 rounded border-2 border-[#6b240c]'>Join Collaboration</button>

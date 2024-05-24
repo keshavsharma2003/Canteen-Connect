@@ -69,7 +69,7 @@ const EmployeeProfile = (props) => {
     useEffect(() => {
         const fetchPreviousOrders = async () => {
             try {
-                const response = await fetch('previousOrders.json');
+                const response = await fetch('/data/previousOrders.json');
                 const data = await response.json();
                 setPreviousOrders(data);
             } catch (error) {
@@ -212,18 +212,18 @@ const EmployeeProfile = (props) => {
                     </button>
                 </div>)}
                 {activeTab === 'previousOrders' && (
-                    <div className="p-6 rounded-lg w-full">
+                    <div className="p-6 w-full">
                         {previousOrders.map((order, index) => (
-                            <div key={index} className="border-b py-2">
-                                <h3 className="font-bold">Order #{order.id}</h3>
-                                <p>Date: {order.date}</p>
-                                <p>Total: ${order.total}</p>
-                                <ul>
+                            <div key={index} className="border-b py-2 text-center">
+                                <h3 className="font-bold text-lg">Order #{order.id}</h3>
+                                <p>Date: {order.date}, Time: {order.time}</p>
+                                                                                                <ul>
                                     {order.items.map((item, itemIndex) => (
                                         <li key={itemIndex}>
-                                            {item.name} - {item.quantity}
+                                            {item.name} - ({item.quantity})
                                         </li>
                                     ))}
+                                    <p className="font-bold">Total: &#8377;{order.totalPrice}</p>
                                 </ul>
                             </div>
                         ))}
