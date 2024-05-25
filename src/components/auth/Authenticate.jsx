@@ -53,7 +53,7 @@ function Authenticate(props) {
         <footer className="absolute w-full bottom-0">
           <h6 className="text-center text-lg font-semibold">
             <small>
-              Copyright &copy; Smart Bite {currentYear} | All Rights Reserved
+              Copyright &copy; Canteen Circuit {currentYear} | All Rights Reserved
             </small>
           </h6>
         </footer>

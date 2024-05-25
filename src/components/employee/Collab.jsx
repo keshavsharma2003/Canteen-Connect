@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 const Collab = (props) => {
   const [collabData, setCollabData] = useState('');
@@ -27,11 +28,11 @@ const Collab = (props) => {
       ?.EmployeeName)
     setEmployeeEmail(JSON.parse(localStorage.getItem("LOGGED_IN"))?.payload
       ?.EmployeeEmail)
-      addToCollab(employeeName, employeeEmail);
+      addToCollab(randomCode, employeeName, employeeEmail);
     fetchCollab();
   }
 
-  const addToCollab = async (name, email)=>{
+  const addToCollab = async (code, name, email)=>{
       try {
         await axios.post('/data/collab.json', );
       } catch (error) {
